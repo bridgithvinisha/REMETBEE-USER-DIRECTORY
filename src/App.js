@@ -1,34 +1,45 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import UserCard from "./components/UserCard";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import SearchBar from "./components/SearchBar";
+import UserCard from "./components/UserCard";
+import "./App.css";
 
-function App() {
+const App = () => {
   const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState("");
+  const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data))
-      .catch((error) => console.error("Error fetching users:", error));
+    axios.get("https://jsonplaceholder.typicode.com/users")
+      .then(res => {
+        setUsers(res.data);
+        setFiltered(res.data);
+      })
+      .catch(err => console.error("Error fetching users:", err));
   }, []);
 
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const handleSearch = (query) => {
+    const lowerQuery = query.toLowerCase();
+    setFiltered(
+      users.filter(
+        (u) =>
+          u.name.toLowerCase().includes(lowerQuery) ||
+          u.username.toLowerCase().includes(lowerQuery)
+      )
+    );
+  };
 
   return (
-    <div className="App">
-      <h1>User Directory</h1>
-      <SearchBar value={search} onChange={setSearch} />
-      <div className="user-list">
-        {filteredUsers.map((user) => (
+    <div className="app-container">
+      <h1 className="title">User Directory</h1>
+      <SearchBar onSearch={handleSearch} />
+      <div className="user-grid">
+        {filtered.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default App;
+
