@@ -1,0 +1,145 @@
+/* 🌈 Background & Layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #dbeafe, #f5d0fe);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 🌟 App Container */
+.App {
+  text-align: center;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+/* 🧭 Title */
+h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #111827;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔍 Search Bar */
+.search-bar {
+  padding: 12px 20px;
+  width: 60%;
+  max-width: 600px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-bottom: 40px;
+}
+
+.search-bar:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.25);
+}
+
+/* 🧑‍💻 User List Layout */
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* 💳 User Card */
+.user-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  width: 270px;
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+}
+
+.user-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 🖼️ User Avatar */
+.user-avatar {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border: 3px solid #7c3aed;
+  transition: all 0.3s ease;
+}
+
+.user-card:hover .user-avatar {
+  transform: scale(1.05);
+}
+
+/* 👤 User Name & Username */
+.user-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e1e1e;
+  margin: 8px 0 5px;
+}
+
+.user-username {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* 📧 Contact Info */
+.user-info {
+  text-align: left;
+  font-size: 14px;
+  color: #374151;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.user-info p {
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+}
+
+.user-info .icon {
+  color: #7c3aed;
+  margin-right: 8px;
+}
+
+/* 🌐 Website Link */
+.user-info a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.user-info a:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 80%;
+  }
+
+  .user-card {
+    width: 85%;
+  }
+}
+
+
+
